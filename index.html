@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ROI Edge — Professional return-on-investment calculator by Minaj Enterprises for traders, investors, and financial analysts.">
+  <title>ROI Edge | Minaj Enterprises</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta property="og:image" content="og-img.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-background" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="glow glow--accent"></div>
+    <div class="glow glow--success"></div>
+  </div>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="hero" role="banner">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Minaj Enterprises</p>
+        <h1 class="hero__title">ROI Edge</h1>
+        <p class="hero__subtitle">
+          Professional return-on-investment calculator for traders, investors, business owners, and financial analysts.
+        </p>
+      </div>
+
+      <aside class="brand-card" aria-label="Company branding">
+        <div class="brand-card__logo-wrap">
+          <img src="logo.jpg" alt="Minaj Enterprises logo" class="brand-card__logo" width="72" height="72">
+        </div>
+        <p class="brand-card__name">Minaj Enterprises</p>
+        <p class="brand-card__tagline">A Product of Minaj Enterprises</p>
+      </aside>
+    </div>
+  </header>
+
+  <main id="main-content" class="main">
+    <div class="container">
+      <section class="calculator-card" aria-labelledby="calculator-heading">
+        <div class="calculator-card__header">
+          <h2 id="calculator-heading" class="calculator-card__title">Investment Calculator</h2>
+          <p class="calculator-card__desc">Enter your initial and final amounts — results update in real time.</p>
+        </div>
+
+        <form class="calculator-form" id="calculator-form" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="initial-amount" class="form-label">Initial Amount</label>
+              <div class="input-wrap">
+                <span class="input-prefix" aria-hidden="true">$</span>
+                <input
+                  type="number"
+                  id="initial-amount"
+                  name="initial-amount"
+                  class="form-input"
+                  placeholder="Enter initial amount"
+                  inputmode="decimal"
+                  step="any"
+                  min="0"
+                  autocomplete="off"
+                  aria-describedby="initial-hint"
+                >
+              </div>
+              <span id="initial-hint" class="form-hint">Starting capital or investment value</span>
+            </div>
+
+            <div class="form-group">
+              <label for="final-amount" class="form-label">Final Amount</label>
+              <div class="input-wrap">
+                <span class="input-prefix" aria-hidden="true">$</span>
+                <input
+                  type="number"
+                  id="final-amount"
+                  name="final-amount"
+                  class="form-input"
+                  placeholder="Enter final amount"
+                  inputmode="decimal"
+                  step="any"
+                  min="0"
+                  autocomplete="off"
+                  aria-describedby="final-hint"
+                >
+              </div>
+              <span id="final-hint" class="form-hint">Ending value after the investment period</span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn--ghost" id="reset-btn">
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+              Reset
+            </button>
+            <button type="button" class="btn btn--primary" id="copy-btn" disabled>
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              Copy Results
+            </button>
+          </div>
+        </form>
+
+        <div class="results-section" aria-live="polite" aria-atomic="true">
+          <div class="results-grid">
+            <article class="result-card" id="roi-figure-card">
+              <div class="result-card__header">
+                <span class="result-card__label">ROI Figure</span>
+                <span class="result-card__badge" id="figure-badge" aria-hidden="true">—</span>
+              </div>
+              <p class="result-card__value result-card__value--neutral" id="roi-figure" aria-label="ROI Figure">—</p>
+              <p class="result-card__sub">Absolute return in currency</p>
+            </article>
+
+            <article class="result-card" id="roi-percent-card">
+              <div class="result-card__header">
+                <span class="result-card__label">ROI Percentage</span>
+                <span class="result-card__badge" id="percent-badge" aria-hidden="true">—</span>
+              </div>
+              <p class="result-card__value result-card__value--neutral" id="roi-percent" aria-label="ROI Percentage">—</p>
+              <p class="result-card__sub">Percentage return on investment</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="insights-section" aria-labelledby="insights-heading">
+        <div class="insights-section__header">
+          <h2 id="insights-heading" class="insights-section__title">Live Insights</h2>
+          <span class="insights-section__live">
+            <span class="live-dot" aria-hidden="true"></span>
+            Real-time
+          </span>
+        </div>
+
+        <div class="insights-grid">
+          <article class="insight-card">
+            <span class="insight-card__label">Status</span>
+            <p class="insight-card__value insight-card__value--neutral" id="insight-status">—</p>
+          </article>
+
+          <article class="insight-card">
+            <span class="insight-card__label">Capital Growth</span>
+            <p class="insight-card__value insight-card__value--neutral" id="insight-growth">—</p>
+          </article>
+
+          <article class="insight-card">
+            <span class="insight-card__label" id="insight-amount-label">Amount Earned/Lost</span>
+            <p class="insight-card__value insight-card__value--neutral" id="insight-amount">—</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="logo.jpg" alt="" class="footer__logo" width="40" height="40" aria-hidden="true">
+        <span class="footer__product">ROI Edge</span>
+      </div>
+
+      <div class="footer__legal">
+        <p>&copy; 2026 Minaj Enterprises. All Rights Reserved.</p>
+        <p>ROI Edge is a proprietary financial calculation tool developed and maintained by Minaj Enterprises.</p>
+        <p>This calculator is provided for analytical and informational purposes only.</p>
+        <p>Minaj Enterprises does not provide financial, investment, tax, or legal advice.</p>
+        <p>Users are responsible for independently verifying all calculations before making financial decisions.</p>
+      </div>
+
+      <div class="footer__meta">
+        <span class="footer__version">Version 1.0</span>
+        <span class="footer__divider" aria-hidden="true">|</span>
+        <span class="footer__company">Minaj Enterprises</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
